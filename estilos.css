@@ -192,3 +192,77 @@ nav a:hover {
     display: block;
     margin: 0; /* Elimina cualquier margen invisible que lo esté empujando */
 }
+/* 2. Reparar los videos de YouTube para que se adapten al contenedor */
+.placeholder-imagen {
+    position: relative !important;
+    overflow: hidden !important;
+    height: 250px !important;
+}
+
+/* Obliga tanto a los iframes de YouTube como a las imágenes a llenar la tarjeta */
+.video-portfolio,
+.img-portfolio,
+.placeholder-imagen iframe {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    object-fit: cover !important;       /* Evita que las imágenes se deformen */
+    border-radius: 8px !important;
+}
+/* =======================================================
+   📺 DISEÑO EXTENDIDO Y CENTRADO PARA VIDEOS DE GAMEPLAY
+   ======================================================= */
+
+/* Identificamos las tarjetas que tienen videos de YouTube adentro */
+.tarjeta-portfolio:has(iframe),
+.tarjeta-portfolio:has(.video-portfolio) {
+    /* Sacamos el video de la rejilla compartida y lo obligamos a ocupar su propia fila completa */
+    grid-column: 1 / -1; 
+    
+    /* Controlamos el ancho máximo para que no se estire al infinito en monitores gigantes */
+    max-width: 800px; 
+    width: 100%;
+    
+    /* Centramos la tarjeta horizontalmente en la pantalla */
+    margin: 20px auto; 
+    
+    /* Un toque extra de estilo Grind Fiction para destacar los videos */
+    border: 3px solid #00ff88;
+    box-shadow: 0px 0px 15px rgba(0, 255, 136, 0.3);
+}
+
+/* Hacemos que el contenedor interno del video sea más alto proporcionalmente al nuevo ancho */
+.tarjeta-portfolio:has(iframe) .placeholder-imagen,
+.tarjeta-portfolio:has(.video-portfolio) .placeholder-imagen {
+    height: 450px !important; /* Pasamos de 250px a 450px para formato 16:9 espectacular */
+}
+/* =======================================================
+   🖼️ AJUSTE EXTENDIDO PARA TARJETAS DE ARTE 2D / IMÁGENES
+   ======================================================= */
+
+/* 1. Agrandamos las tarjetas de la galería manteniendo el formato lado a lado */
+.grid-portafolio {
+    /* Cambiamos el minmax de 300px a 450px para que las tarjetas sean considerablemente más grandes */
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)) !important;
+    gap: 40px !important; /* Un poco más de separación entre ellas para que respiren */
+}
+
+/* 2. Seleccionamos específicamente las tarjetas que NO tienen videos (es decir, las de fotos) */
+.tarjeta-portfolio:not(:has(iframe)):not(:has(.video-portfolio)) .placeholder-imagen {
+    height: 400px !important; /* Elevamos el alto de la caja de la imagen de 250px a 400px */
+}
+
+/* 3. Forzamos a las imágenes 2D a ajustarse perfectamente al tamaño de su nuevo contenedor */
+.img-portfolio {
+    width: 100% !important;
+    height: 100% !important;
+    
+    /* Esta es la propiedad mágica: recorta la imagen para que llene la caja 
+       completamente adaptándose a la nueva escala, sin verse estirada ni aplastada */
+    object-fit: cover !important; 
+    
+    display: block !important;
+}
