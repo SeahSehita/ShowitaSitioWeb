@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showita Studios</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Pixel&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="estilos.css">
+</head>
+</head>
+<body>
+
+    <!-- Fondo con rejilla/grid nostálgico del Y2K -->
+    <div class="grid-background"></div>
+
+    <header>
+        <div class="logo">SHOWITA STUDIOS</div>
+        <img src="Media\logo.png" alt="Showita Studios Logo" height="100">
+        <nav>
+            <a href="#juegos" class="nav-link">JUEGOS</a>
+            <a href="#arte" class="nav-link">GALERIA DE ARTE</a>
+            <a href="#nosotros" class="nav-link">QUIENES SOMOS</a>
+        </nav>
+    </header>
+
+    <main class="contenedor-principal">
+        <!-- Banner Principal estilo Grind Fiction / Frutiger Metro -->
+        <section class="hero-banner">
+            <h1 class="titulo-grind">FUNK YOU UP!</h1>
+            <p class="subtitulo-metro">Estudio de Videojuegos Independiente. Grind Fiction y Todo el Funk.</p>
+            <button class="btn-grind" id="btnMusica">Entra a NeoSangotia</button>
+        </section>
+
+        <!-- Sección de Portafolio: Modelos 3D y Arte -->
+        <section id="arte" class="seccion-portafolio">
+            <h2 class="subtitulo-seccion">PORTAFOLIO</h2>
+            
+            <div class="grid-portafolio">
+                <!-- Tarjeta para Concept Art -->
+                <div class="tarjeta-portfolio">
+                    <div class="tag">CONCEPT ART</div>
+                    <div class="placeholder-imagen">
+                        <!-- Aquí irá tu imagen de Concept Art -->
+                        <span class="marcador-posicion">[ARTE 2D]</span>
+                    </div>
+                    <h3>Diseño de niveles y mas</h3>
+                </div>
+
+                <!-- Tarjeta para Modelado 3D -->
+                <div class="tarjeta-portfolio">
+                    <div class="tag">MODELOS 3D</div>
+                    <div class="placeholder-imagen">
+                        <!-- Cuando sepas más, aquí meterás un iframe de Sketchfab -->
+                        <span class="marcador-posicion">[ARTE 3D]</span>
+                    </div>
+                    <h3>Props y Personajes</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
