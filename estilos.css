@@ -266,3 +266,48 @@ nav a:hover {
     
     display: block !important;
 }
+/* =======================================================
+   🖼️ PANTALLA COMPLETA (LIGHTBOX) PARA ARTE 2D
+   ======================================================= */
+
+/* Cambiamos el cursor al pasar por encima de las imágenes para indicar que se pueden clickear */
+.img-portfolio {
+    cursor: zoom-in !important;
+}
+
+/* El contenedor negro de fondo que cubre toda la pantalla */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(5, 5, 10, 0.95); /* Fondo oscuro Y2K translúcido */
+    z-index: 9999; /* Por encima de absolutamente todo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* La imagen en grande dentro del visor */
+.lightbox-imagen {
+    max-width: 90%;
+    max-height: 85%;
+    object-fit: contain;
+    border: 3px solid #00ff88; /* Borde neón brillante */
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+    border-radius: 4px;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+/* Animación de entrada suave */
+.lightbox-overlay.activo {
+    opacity: 1;
+}
+.lightbox-overlay.activo .lightbox-imagen {
+    transform: scale(1);
+}
