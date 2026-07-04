@@ -109,7 +109,7 @@ nav a:hover {
     font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 5px 5px 0px #a200ff; /*Sombra sólida Y2K*/
+    box-shadow: 5px 5px 0px #a200ff; /*Sombra sólida*/
     transition: 0.2s;
 }
 
@@ -242,39 +242,83 @@ nav a:hover {
 .img-portfolio {
     cursor: zoom-in !important;
 }
+/*CARRUSEL 3D INTERACTIVO (PANTALLA COMPLETA)*/
+
 .lightbox-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(5, 5, 10, 0.95);
+    background-color: rgba(5, 5, 10, 0.98);
     z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: zoom-out;
     opacity: 0;
     transition: opacity 0.3s ease;
+    perspective: 1000px; 
+    overflow: hidden;
 }
-.lightbox-imagen {
-    max-width: 90%;
-    max-height: 85%;
+.carrusel-contenedor {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+}
+.carrusel-item {
+    position: absolute;
+    width: 740px;
+    height: 800px;
     object-fit: contain;
     border: 3px solid #00ff88;
-    box-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
-    border-radius: 4px;
-    transform: scale(0.95);
-    transition: transform 0.3s ease;
+    box-shadow: 0 0 25px rgba(0, 255, 136, 0.3);
+    background: #101020;
+    border-radius: 8px;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease, z-index 0.5s;
+    user-select: none;
 }
+.btn-carrusel {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #05050a;
+    color: #00ff88;
+    border: 2px solid #00ff88;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 15px 22px;
+    cursor: pointer;
+    z-index: 10000;
+    box-shadow: 4px 4px 0px #9400d3;
+    transition: 0.2s;
+}
+.btn-carrusel:hover {
+    background: #00ff88;
+    color: #000;
+    box-shadow: 6px 6px 0px #fff;
+}
+.btn-izq { left: 5%; }
+.btn-der { right: 5%; }
+.btn-cerrar-carrusel {
+    position: absolute;
+    top: 30px;
+    right: 5%;
+    background: transparent;
+    color: #ff0055;
+    border: 2px solid #ff0055;
+    padding: 8px 16px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+}
+.btn-cerrar-carrusel:hover { background: #ff0055; color: #fff; }
 
-/*Animación de entrada*/
-.lightbox-overlay.activo {
-    opacity: 1;
-}
-.lightbox-overlay.activo .lightbox-imagen {
-    transform: scale(1);
-}
+.lightbox-overlay.activo { opacity: 1; }
 /*ICONOS FLOTANTES DE BG*/
 .icono-flotante {
     position: fixed;
