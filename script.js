@@ -4,92 +4,115 @@ botonGrind.addEventListener('click', () => {
     alert("Instalando troyano...");
 });
 //SISTEMA DE CARRUSEL 3D EN PROFUNDIDAD
-const galeriaCompletaArte = [
+const galeriaPersonajes = [
     'Media/Acc.png',
     'Media/Uni.png',
+    'Media/WiWi.png',
+    'Media/Racer.png',
+    'Media/Rally.png',
 ];
 
-const imagenesPortfolio = document.querySelectorAll('.img-portfolio');
+const galeriaEscenarios = [
+    'ConceptArt/1.png',
+    'ConceptArt/2.png',
+];
 
-imagenesPortfolio.forEach(img => {
-    img.addEventListener('click', () => {
-        let indiceActivo = 0;
-        const overlay = document.createElement('div');
-        overlay.classList.add('lightbox-overlay');
+//FUNCIÓN QUE CREA EL CARRUSEL
+function abrirRueda3D(listaImagenes) {
+    let indiceActivo = 0;
 
-        const contenedor = document.createElement('div');
-        contenedor.classList.add('carrusel-contenedor');
+    const overlay = document.createElement('div');
+    overlay.classList.add('lightbox-overlay');
 
-        //Botones de control
-        const btnIzq = document.createElement('button');
-        btnIzq.className = 'btn-carrusel btn-izq';
-        btnIzq.innerHTML = '&#10094;'; //Flecha izquierda <
+    const contenedor = document.createElement('div');
+    contenedor.classList.add('carrusel-contenedor');
 
-        const btnDer = document.createElement('button');
-        btnDer.className = 'btn-carrusel btn-der';
-        btnDer.innerHTML = '&#10095;'; //Flecha derecha >
+    const btnIzq = document.createElement('button');
+    btnIzq.className = 'btn-carrusel btn-izq';
+    btnIzq.innerHTML = '&#10094;';
 
-        const btnCerrar = document.createElement('button');
-        btnCerrar.className = 'btn-cerrar-carrusel';
-        btnCerrar.innerText = 'ESC // CERRAR';
-        galeriaCompletaArte.forEach((ruta, idx) => {
-            const item = document.createElement('img');
-            item.src = ruta;
-            item.classList.add('carrusel-item');
-            contenedor.appendChild(item);
-        });
+    const btnDer = document.createElement('button');
+    btnDer.className = 'btn-carrusel btn-der';
+    btnDer.innerHTML = '&#10095;';
 
-        overlay.appendChild(btnIzq);
-        overlay.appendChild(contenedor);
-        overlay.appendChild(btnDer);
-        overlay.appendChild(btnCerrar);
-        document.body.appendChild(overlay);
-        setTimeout(() => overlay.classList.add('activo'), 10);
-        const items = contenedor.querySelectorAll('.carrusel-item');
+    const btnCerrar = document.createElement('button');
+    btnCerrar.className = 'btn-cerrar-carrusel';
+    btnCerrar.innerText = 'ESC // CERRAR';
 
-        //FÓRMULA MATEMÁTICA INTERNA PARA LA POSICIÓN 3D
-        function actualizarPosicionesCarrusel() {
-            items.forEach((item, i) => {
-                let calcularDistancia = i - indiceActivo;
-                if (calcularDistancia < -Math.floor(items.length / 2)) calcularDistancia += items.length;
-                if (calcularDistancia > Math.floor(items.length / 2)) calcularDistancia -= items.length;
-
-                if (calcularDistancia === 0) {
-                    item.style.transform = 'translateX(0px) translateZ(0px) rotateY(0deg)';
-                    item.style.opacity = '1';
-                    item.style.zIndex = '10';
-                } else if (calcularDistancia > 0) {
-                    item.style.transform = `translateX(${calcularDistancia * 180}px) translateZ(-200px) rotateY(-35deg)`;
-                    item.style.opacity = '0.35'; // Pierde visibilidad
-                    item.style.zIndex = `${10 - calcularDistancia}`;
-                } else {
-                    item.style.transform = `translateX(${calcularDistancia * 180}px) translateZ(-200px) rotateY(35deg)`;
-                    item.style.opacity = '0.35'; // Pierde visibilidad
-                    item.style.zIndex = `${10 + calcularDistancia}`;
-                }
-            });
-        }
-
-        actualizarPosicionesCarrusel();
-
-        btnDer.addEventListener('click', (e) => {
-            e.stopPropagation();
-            indiceActivo = (indiceActivo + 1) % items.length;
-            actualizarPosicionesCarrusel();
-        });
-
-        btnIzq.addEventListener('click', (e) => {
-            e.stopPropagation();
-            indiceActivo = (indiceActivo - 1 + items.length) % items.length;
-            actualizarPosicionesCarrusel();
-        });
-
-        btnCerrar.addEventListener('click', () => {
-            overlay.classList.remove('activo');
-            setTimeout(() => overlay.remove(), 300);
-        });
+    listaImagenes.forEach((ruta) => {
+        const item = document.createElement('img');
+        item.src = ruta;
+        item.classList.add('carrusel-item');
+        contenedor.appendChild(item);
     });
+
+    overlay.appendChild(btnIzq);
+    overlay.appendChild(contenedor);
+    overlay.appendChild(btnDer);
+    overlay.appendChild(btnCerrar);
+    document.body.appendChild(overlay);
+
+    setTimeout(() => overlay.classList.add('activo'), 10);
+
+    const items = contenedor.querySelectorAll('.carrusel-item');
+
+    function actualizarPosiciones() {
+        items.forEach((item, i) => {
+            let calcularDistancia = i - indiceActivo;
+            if (calcularDistancia < -Math.floor(items.length / 2)) calcularDistancia += items.length;
+            if (calcularDistancia > Math.floor(items.length / 2)) calcularDistancia -= items.length;
+
+            if (calcularDistancia === 0) {
+                item.style.transform = 'translateX(0px) translateZ(0px) rotateY(0deg)';
+                item.style.opacity = '1';
+                item.style.zIndex = '10';
+            } else if (calcularDistancia > 0) {
+                item.style.transform = `translateX(${calcularDistancia * 180}px) translateZ(-200px) rotateY(-35deg)`;
+                item.style.opacity = '0.35';
+                item.style.zIndex = `${10 - calcularDistancia}`;
+            } else {
+                item.style.transform = `translateX(${calcularDistancia * 180}px) translateZ(-200px) rotateY(35deg)`;
+                item.style.opacity = '0.35';
+                item.style.zIndex = `${10 + calcularDistancia}`;
+            }
+        });
+    }
+
+    actualizarPosiciones();
+
+    btnDer.addEventListener('click', (e) => {
+        e.stopPropagation();
+        indiceActivo = (indiceActivo + 1) % items.length;
+        actualizarPosiciones();
+    });
+
+    btnIzq.addEventListener('click', (e) => {
+        e.stopPropagation();
+        indiceActivo = (indiceActivo - 1 + items.length) % items.length;
+        actualizarPosiciones();
+    });
+
+    btnCerrar.addEventListener('click', () => {
+        overlay.classList.remove('activo');
+        setTimeout(() => overlay.remove(), 300);
+    });
+}
+
+// 3. ASIGNAR LAS RUEDAS A CADA IMAGEN ESPECÍFICA
+window.addEventListener('DOMContentLoaded', () => {
+    // Al hacer click en Concept Art (Escenarios)
+    const imgEscenarios = document.querySelector('.img-escenarios');
+    if (imgEscenarios) {
+        imgEscenarios.addEventListener('click', () => abrirRueda3D(galeriaEscenarios));
+    }
+
+    // Al hacer click en Arte 2D (Personajes)
+    const imgPersonajes = document.querySelector('.img-personajes');
+    if (imgPersonajes) {
+        imgPersonajes.addEventListener('click', () => abrirRueda3D(galeriaPersonajes));
+    }
 });
+
 
 //SISTEMA DE ICONOS ANIMADOS ALEATORIOS
 const misIconos = [
