@@ -319,9 +319,9 @@ nav a:hover {
     position: fixed;
     pointer-events: none; /* Hace que los iconos sean "fantasmas", no bloquean los clicks del usuario */
     z-index: -1;          /* Quedan detrás del contenido, pero encima de la rejilla base */
-    width: 60px;          /* Tamaño inicial estándar para tus iconos */
+    width: 120px;          /* Tamaño inicial estándar para tus iconos */
     height: auto;
-    opacity: 0.25;        /* Transparencia sutil para que no saturen ni tapen los textos */
+    opacity: 0.75;        /* Transparencia sutil para que no saturen ni tapen los textos */
     filter: drop-shadow(0px 0px 8px rgba(0, 255, 136, 0.2));
     user-select: none;
 }

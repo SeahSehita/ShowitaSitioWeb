@@ -55,7 +55,15 @@ const misIconos = [
     'Media/metro_51.png', 
     'Media/metro_76.png', 
     'Media/metro_62.png', 
-    'Media/metro_73.png'
+    'Media/metro_73.png',
+    'Media/metro_51.png', 
+    'Media/metro_76.png', 
+    'Media/metro_62.png', 
+    'Media/metro_73.png',
+    'Media/metro_52.png', 
+    'Media/metro_54.png', 
+    'Media/metro_52.png', 
+    'Media/metro_54.png', 
 ];
 
 function crearIconoFlotante(nombreArchivo) {
@@ -75,7 +83,7 @@ function crearIconoFlotante(nombreArchivo) {
     icono.style.transition = `left ${duracionViaje}s linear, top ${duracionViaje}s linear`;
     
     // Le sumamos la animación de vaivén de CSS que hicimos en el Paso 1
-    icono.style.animation = `flotadoSutil ${Math.random() * 4 + 4}s ease-in-out infinite`;
+    icono.style.animation = `flotadoSutil ${Math.random() * 2 + 2}s ease-in-out infinite`;
 
     // Metemos el icono a la página
     document.body.appendChild(icono);
