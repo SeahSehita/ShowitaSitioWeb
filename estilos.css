@@ -1,4 +1,4 @@
-/*CONFIGURACIÓN GENERAL Y2K*/
+/*CONFIGURACIÓN GENERAL*/
 body {
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ body {
     overflow-x: hidden;
 }
 
-/*Fondo de grid cyber*/
+/*Fondo de grid*/
 .grid-background {
     position: fixed;
     top: 0;
@@ -100,7 +100,6 @@ nav a:hover {
     margin: 20px auto;
 }
 
-/*Botón de Acción Radical*/
 .btn-grind {
     background-color: #00ff88;
     color: #000;
@@ -111,6 +110,7 @@ nav a:hover {
     cursor: pointer;
     box-shadow: 5px 5px 0px #a200ff; /*Sombra sólida*/
     transition: 0.2s;
+    font-family: inherit;
 }
 
 .btn-grind:hover {
@@ -191,7 +191,6 @@ nav a:hover {
     display: block;
     margin: 0;
 }
-/*videos de YouTube*/
 .placeholder-imagen {
     position: relative !important;
     overflow: hidden !important;
@@ -219,7 +218,6 @@ nav a:hover {
     border: 3px solid #00ff88;
     box-shadow: 0px 0px 15px rgba(0, 255, 136, 0.3);
 }
-/*contenedor interno del video sea más alto proporcionalmente al nuevo ancho*/
 .tarjeta-portfolio:has(iframe) .placeholder-imagen,
 .tarjeta-portfolio:has(.video-portfolio) .placeholder-imagen {
     height: 450px !important;
@@ -319,7 +317,6 @@ nav a:hover {
 .btn-cerrar-carrusel:hover { background: #ff0055; color: #fff; }
 
 .lightbox-overlay.activo { opacity: 1; }
-/*ICONOS FLOTANTES DE BG*/
 .icono-flotante {
     position: fixed;
     pointer-events: none;
@@ -342,4 +339,207 @@ nav a:hover {
     width: 100%; 
     height: auto;
     filter: drop-shadow(0px 0px 15px rgba(0, 255, 136, 0.3)); 
+}
+/*CONFIGURACIÓN ESTILOS BLOG NEÓN & INTEGRADOS*/
+
+.seccion-blog {
+    background: rgba(16, 16, 32, 0.85);
+    padding: 40px;
+    border-radius: 8px;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+/*Variaciones de color*/
+.neón-morado { border: 2px solid #9400d3; box-shadow: 0 0 20px rgba(148, 0, 211, 0.2); }
+.neón-verde { border: 2px solid #00ff88; box-shadow: 0 0 20px rgba(0, 255, 136, 0.2); }
+.tag-blog { font-size: 0.85rem; letter-spacing: 2px; display: block; margin-bottom: 10px; }
+.neón-morado .tag-blog { color: #9400d3; }
+.neón-verde .tag-blog { color: #00ff88; }
+.titulo-blog { font-size: 2.2rem; color: #fff; margin-bottom: 20px; text-transform: uppercase; }
+.texto-blog { color: #e0e0e0; line-height: 1.8; font-size: 1.1rem; }
+.mini-grid-blog {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.tarjeta-mini-grid {
+    background: rgba(5, 5, 10, 0.6);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    padding: 20px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+.tarjeta-mini-grid:hover { border-color: #00ff88; box-shadow: 0 0 15px rgba(0, 255, 136, 0.2); }
+.tarjeta-mini-grid img { width: 100%; height: 180px; object-fit: contain; margin-bottom: 15px; }
+.tarjeta-mini-grid h3 { color: #00ff88; margin-bottom: 10px; }
+.tarjeta-mini-grid p { color: #aaa; font-size: 0.95rem; line-height: 1.5; }
+
+/*SISTEMA DE TARJETAS*/
+.grid-personajes-3d {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 25px;
+}
+
+.tarjeta-3d-contenedor {
+    background-color: transparent;
+    width: 100%;
+    height: 350px;
+    perspective: 1000px;
+}
+
+.tarjeta-3d-interna {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.tarjeta-3d-contenedor.girada .tarjeta-3d-interna {
+    transform: rotateY(180deg);
+}
+.tarjeta-3d {
+    cursor: pointer;
+}
+
+.tarjeta-cara {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.tarjeta-frente {
+    background: rgba(10, 10, 20, 0.7);
+    border: 2px solid #9400d3;
+    box-shadow: 0 0 15px rgba(148, 0, 211, 0.15);
+}
+
+.tarjeta-frente img {
+    width: 100%;
+    height: 80%;
+    object-fit: contain;
+}
+
+.indicador-giro {
+    font-size: 0.75rem;
+    color: #9400d3;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    opacity: 0.7;
+}
+
+.tarjeta-atras {
+    background: #110b24;
+    border: 2px solid #00ff88;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+    transform: rotateY(180deg);
+}
+
+.tarjeta-atras h3 {
+    color: #00ff88;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+.tarjeta-atras p {
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+/*POP-UP DE ALERTA*/
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 5, 10, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+/* Caja de la alerta */
+.popup-caja {
+    background: #1a0000;
+    border: 3px solid #ff0055;
+    box-shadow: 0 0 30px rgba(255, 0, 85, 0.4);
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: inherit;
+    animation: pulsoAlerta 2s infinite alternate;
+}
+
+.popup-header {
+    background: #ff0055;
+    color: #000;
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.popup-cuerpo {
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.popup-cuerpo h2 {
+    color: #ff0055;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.popup-cuerpo p {
+    color: #ffb3bf;
+    line-height: 1.6;
+    font-size: 1.05rem;
+    margin-bottom: 25px;
+}
+
+.btn-popup-cerrar {
+    background: transparent;
+    color: #ff0055;
+    border: 2px solid #ff0055;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.2s ease;
+    font-weight: bold;
+}
+
+.btn-popup-cerrar:hover {
+    background: #ff0055;
+    color: #000;
+    box-shadow: 0 0 15px #ff0055;
+}
+
+@keyframes pulsoAlerta {
+    0% { box-shadow: 0 0 20px rgba(255, 0, 85, 0.3); }
+    100% { box-shadow: 0 0 40px rgba(255, 0, 85, 0.6); }
 }

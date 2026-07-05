@@ -1,4 +1,5 @@
 //Inicio del Script jeje
+
 const botonGrind = document.getElementById('btnMusica');
 botonGrind.addEventListener('click', () => {
     alert("Instalando troyano...");
