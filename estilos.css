@@ -618,3 +618,76 @@ nav a:hover {
         overflow-x: hidden;
     }
 }
+/* =======================================================
+   🧪 APARTADO DE MODELOS 3D (LABORATORIO)
+   ======================================================= */
+
+/* Grid contenedor para las vitrinas 3D */
+.contenedor-laboratorio-3d {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* Caja/Vitrina individual del modelo */
+.caja-modelo-3d {
+    background: rgba(5, 15, 10, 0.8); /* Fondo hacker verdoso ultra oscuro */
+    border: 1px dashed #00ff88; /* Borde discontinuo estilo blueprint */
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.05);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+}
+
+/* Efecto hover sutil al interactuar con la cabina */
+.caja-modelo-3d:hover {
+    width: 100%;
+    height: 546px;
+    border-style: solid;
+    border-color: #00ff88;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.15);
+}
+
+/* Cabeceras y pies de la vitrina estilo terminal */
+.header-modelo, .footer-modelo {
+    width: 100%;
+    background: rgba(0, 255, 136, 0.1);
+    color: #00ff88;
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    box-sizing: border-box;
+}
+
+.header-modelo {
+    border-bottom: 1px dashed rgba(0, 255, 136, 0.3);
+}
+
+.footer-modelo {
+    border-top: 1px dashed rgba(0, 255, 136, 0.3);
+    text-align: right;
+    color: #00aa66;
+}
+
+/* Ajuste forzado del renderizador */
+.caja-modelo-3d model-viewer {
+    width: 100%;
+    height: 480px; /* Altura ideal para inspección */
+    background-color: transparent;
+    outline: none;
+    --poster-color: transparent;
+}
+
+/* Adaptación para pantallas móviles */
+@media screen and (max-width: 768px) {
+    .contenedor-laboratorio-3d {
+        grid-template-columns: 1fr;
+        max-width: 340px;
+        margin: 25px auto 0 auto;
+    }
+}
