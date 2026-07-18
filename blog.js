@@ -1,5 +1,5 @@
 
-// LÓGICA EXCLUSIVA DEL BLOG
+//BLOG
 
 document.addEventListener('DOMContentLoaded', () => {
     const popup = document.getElementById('popup-alerta');

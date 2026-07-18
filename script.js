@@ -102,22 +102,17 @@ function abrirRueda3D(listaImagenes) {
         setTimeout(() => overlay.remove(), 300);
     });
 }
-
-// 3. ASIGNAR LAS RUEDAS A CADA IMAGEN ESPECÍFICA
 window.addEventListener('DOMContentLoaded', () => {
-    // Al hacer click en Concept Art (Escenarios)
     const imgEscenarios = document.querySelector('.img-escenarios');
     if (imgEscenarios) {
         imgEscenarios.addEventListener('click', () => abrirRueda3D(galeriaEscenarios));
     }
 
-    // Al hacer click en Arte 2D (Personajes)
     const imgPersonajes = document.querySelector('.img-personajes');
     if (imgPersonajes) {
         imgPersonajes.addEventListener('click', () => abrirRueda3D(galeriaPersonajes));
     }
 });
-
 
 //SISTEMA DE ICONOS ANIMADOS ALEATORIOS
 const misIconos = [
