@@ -922,7 +922,7 @@ nav a:hover {
 
     .radar-y2k { width: 200px; height: 200px; bottom: 5%; }
     .starburst-1 { width: 180px; height: 180px; top: 5%; }
-    .starburst-2, .gif-esquina-asistente { display: none; }
+    .starburst-2, .gif-esquina-asistente {}
 }
 @media screen and (max-width: 768px) {
     .subtitulo-seccion {
