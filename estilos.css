@@ -924,16 +924,76 @@ nav a:hover {
     .starburst-1 { width: 180px; height: 180px; top: 5%; }
     .starburst-2, .gif-esquina-asistente {}
 }
+
 /* =======================================================
-   GIF ASISTENTE / FLOTANTE
+   PORTAFOLIO GRID Y MULTIMEDIA
    ======================================================= */
 
+.grid-portafolio {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 30px; 
+    width: 100%;
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.tarjeta-portfolio {
+    display: flex;
+    flex-direction: column;
+    background: rgba(17, 107, 43, 0.542); 
+    border: 1px solid rgba(0, 255, 136, 0.15); 
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.tarjeta-portfolio:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 585px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.placeholder-imagen {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;   
+    margin: 15px 0;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #05050a;
+}
+
+.video-portfolio,
+.img-portfolio,
+.placeholder-imagen iframe,
+.placeholder-imagen video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    border: none;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.img-portfolio {
+    cursor: pointer;
+}
+
+/* GIF ASISTENTE FLOTANTE */
 .gif-esquina-asistente {
     position: fixed;
     bottom: 15px;
     left: 15px;
     width: 25vw;
-    max-width: 200px;
+    max-width: 180px;
     min-width: 90px;
     height: auto;
     z-index: 99;
@@ -945,16 +1005,30 @@ nav a:hover {
 }
 
 /* =======================================================
-   AJUSTE ESPECÍFICO PARA MÓVILES (768px o menos)
+   ADAPTACIÓN CELUS
    ======================================================= */
 
 @media screen and (max-width: 768px) {
+    .grid-portafolio {
+        grid-template-columns: 1fr; /* Una sola columna en celulares */
+        gap: 20px;
+        padding: 0 10px;
+    }
+
+    .tarjeta-portfolio:last-child:nth-child(odd) {
+        grid-column: auto;
+        max-width: 100%;
+    }
+
+    .tarjeta-portfolio {
+        padding: 15px;
+    }
+
     .gif-esquina-asistente {
         display: block !important;
         width: 20vw;
-        max-width: 110px;
+        max-width: 100px;
         bottom: 10px;
         left: 10px;
-        opacity: 1;
     }
 }
