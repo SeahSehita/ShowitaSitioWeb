@@ -924,3 +924,22 @@ nav a:hover {
     .starburst-1 { width: 180px; height: 180px; top: 5%; }
     .starburst-2, .gif-esquina-asistente { display: none; }
 }
+@media screen and (max-width: 768px) {
+    .subtitulo-seccion {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    .contenedor-grid-portfolio,
+    .grid-portafolio {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 0 10px;
+    }
+    .tarjeta-portfolio {
+        padding: 15px;
+    }
+    .tag {
+        font-size: 0.75rem;
+        padding: 3px 10px;
+    }
+}
